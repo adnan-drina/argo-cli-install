@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    openshift.io/description: "Declarative GitOps CD for Kubernetes"
+    openshift.io/display-name: "Argo CD"
+  name: argocd

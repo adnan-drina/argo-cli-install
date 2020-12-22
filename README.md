@@ -1,9 +1,7 @@
 # argo-cli-install
 Installing the ArgoCD Operator using the CLI
 
-
 ## Setup Procedure
-
 Ensure that the operator exists in the channel catalog.
 ```shell script
 oc get packagemanifests -n openshift-marketplace | grep argo
@@ -14,19 +12,28 @@ oc describe packagemanifests/argocd-operator -n openshift-marketplace | grep -A3
 ```
 
 ### Create a Project
+[argocd-namespace.yaml](argocd-namespace.yaml)
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    openshift.io/description: "ArgoCD project for gitops"
-    openshift.io/display-name: "ArgoCD"
+    openshift.io/description: "Declarative GitOps CD for Kubernetes"
+    openshift.io/display-name: "Argo CD"
   name: argocd
+```
+```shell script
+oc apply -f argocd-namespace.yaml
+```
+or
+```shell script
+oc new-project argocd
 ```
 
 ### Create a Subscription
-Create a Subscription object YAML file to subscribe a namespace to the ArgoCD Operator, for example, sub.yaml:
+Create a Subscription object YAML file to subscribe a namespace to the ArgoCD Operator
 
+[argocd-sub.yaml](argocd-sub.yaml)
 ```yaml
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
@@ -41,7 +48,7 @@ spec:
 ```
 
 ```shell script
-oc apply -f sub.yaml
+oc apply -f argocd-sub.yaml
 ```
 
 ---
