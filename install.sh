@@ -19,9 +19,8 @@ echo "Argo CD config created!"
 echo " "
 echo "Creating Argo CD Subscription"
 oc apply -f argocd-sub.yaml
-sleep 30
-ARGO="$(oc get pods -o name -n argocd | grep argocd-operator-)"
-oc -n argocd wait --for=condition=Ready ${ARGO}
+ARGO="$(oc get sub -o name -n argocd | grep argocd-operator)"
+oc -n argocd wait --timeout=120 --for=condition=CatalogSourcesUnhealthy=False ${ARGO}
 echo "Argo CD Subscription created!"
 echo " "
 echo "Deploying Argo CD CR"
