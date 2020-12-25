@@ -22,6 +22,7 @@ oc apply -f argocd-sub.yaml
 echo "wait for subscription"
 ARGO_SUB="$(oc get sub -o name -n argocd | grep argocd-operator)"
 oc -n argocd wait --timeout=120s --for=condition=CatalogSourcesUnhealthy=False ${ARGO_SUB}
+sleep 10
 echo "wait for operator"
 ARGO="$(oc get pod -o name -n argocd | grep argocd-operator-)"
 oc -n argocd wait --timeout=120s --for=condition=Ready ${ARGO}
@@ -29,7 +30,7 @@ echo "Argo CD Subscription created!"
 echo " "
 echo "Deploying Argo CD CR"
 HOSTNAME=$(oc config view --minify -o jsonpath='{.clusters[*].cluster.server}' | rev | cut -d':' -f2 | rev | cut -b 6-)
-sed -i -e "s|.cluster-dd79.dd79.example.opentlc.com|$HOSTNAME|g" instance/argocd.yaml
+sed -i -e "s|.cluster-7d6e.7d6e.example.opentlc.com|$HOSTNAME|g" instance/argocd.yaml
 oc apply -f instance/argocd.yaml
 echo "Argo CD CR created!"
 #echo " "
