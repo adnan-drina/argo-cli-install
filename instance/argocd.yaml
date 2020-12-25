@@ -12,11 +12,11 @@ spec:
     redisProxyVersion: "2.0.4"
   server:
     grpc:
-      host: agrocd-grpc.apps.cluster-ams-7f1d.ams-7f1d.sandbox1886.opentlc.com
+      host: agrocd-grpc.apps.cluster-dc55.dc55.example.opentlc.com
       ingress:
         enabled: true
     insecure: true
-    host: agrocd.apps.cluster-ams-7f1d.ams-7f1d.sandbox1886.opentlc.com
+    host: agrocd.apps.apps.cluster-dc55.dc55.example.opentlc.com
     route:
       enabled: true
       tls:
@@ -35,7 +35,10 @@ spec:
   resourceExclusions: |
     - apiGroups:
       - tekton.dev
+      clusters:
+      - '*'
       kinds:
+      - TaskRun
       - PipelineRun
   rbac:
     defaultPolicy: role:readonly
