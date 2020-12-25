@@ -40,6 +40,7 @@ spec:
       kinds:
       - TaskRun
       - PipelineRun
+      - ArgoCD
   rbac:
     defaultPolicy: role:readonly
     policy: |
