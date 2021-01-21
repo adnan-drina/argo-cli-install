@@ -28,6 +28,7 @@ ARGO="$(oc get pod -o name -n argocd | grep argocd-operator-)"
 oc -n argocd wait --timeout=120s --for=condition=Ready ${ARGO}
 echo "Argo CD Subscription created!"
 echo " "
+sleep 10
 echo "Deploying Argo CD CR"
 HOSTNAME=$(oc config view --minify -o jsonpath='{.clusters[*].cluster.server}' | rev | cut -d':' -f2 | rev | cut -b 6-)
 sed -i -e "s|.cluster-7d6e.7d6e.example.opentlc.com|$HOSTNAME|g" instance/argocd.yaml

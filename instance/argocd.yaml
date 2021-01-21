@@ -12,11 +12,11 @@ spec:
     redisProxyVersion: "2.0.4"
   server:
     grpc:
-      host: agrocd-grpc.apps.cluster-7d6e.7d6e.example.opentlc.com
+      host: agrocd-grpc.apps.cluster-c3e3.c3e3.example.opentlc.com
       ingress:
         enabled: true
     insecure: true
-    host: agrocd.apps.cluster-7d6e.7d6e.example.opentlc.com
+    host: agrocd.apps.cluster-c3e3.c3e3.example.opentlc.com
     route:
       enabled: true
       tls:
