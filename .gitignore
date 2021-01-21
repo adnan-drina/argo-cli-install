@@ -19,3 +19,4 @@ nb-configuration.xml
 
 # random
 .DS_Store
+*.bak

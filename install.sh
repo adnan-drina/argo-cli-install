@@ -31,7 +31,7 @@ echo " "
 sleep 10
 echo "Deploying Argo CD CR"
 HOSTNAME=$(oc config view --minify -o jsonpath='{.clusters[*].cluster.server}' | rev | cut -d':' -f2 | rev | cut -b 6-)
-sed -i -e "s|.cluster-[a-zA-Z0-9].[a-zA-Z0-9].example.opentlc.com|$HOSTNAME|g" instance/argocd.yaml
+sed -i '.bak' -e "s|.cluster-[a-zA-Z0-9.]\{29\}|$HOSTNAME|g" instance/argocd.yaml
 oc apply -f instance/argocd.yaml
 echo "Argo CD CR created!"
 #echo " "

@@ -12,11 +12,11 @@ spec:
     redisProxyVersion: "2.0.4"
   server:
     grpc:
-      host: agrocd-grpc.apps.cluster-c3e3.c3e3.example.opentlc.com
+      host: agrocd-grpc.apps.cluster-5ded.5ded.example.opentlc.com
       ingress:
         enabled: true
     insecure: true
-    host: agrocd.apps.cluster-c3e3.c3e3.example.opentlc.com
+    host: agrocd.apps.cluster-5ded.5ded.example.opentlc.com
     route:
       enabled: true
       tls:
@@ -45,6 +45,6 @@ spec:
     defaultPolicy: role:readonly
     policy: |
       g, argocdadmins, role:admin
-      g, system:cluster-admins, role:admin
+      g, system.cluster-5ded.5ded.example.opentlc.comdmins, role:admin
       g, argocdusers, role:readonly
     scopes: "[groups]"
