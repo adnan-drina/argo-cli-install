@@ -22,7 +22,7 @@ oc apply -f argocd-sub.yaml
 echo "wait for subscription"
 ARGO_SUB="$(oc get sub -o name -n argocd | grep argocd-operator)"
 oc -n argocd wait --timeout=120s --for=condition=CatalogSourcesUnhealthy=False ${ARGO_SUB}
-sleep 10
+sleep 20
 echo "wait for operator"
 ARGO="$(oc get pod -o name -n argocd | grep argocd-operator-)"
 oc -n argocd wait --timeout=120s --for=condition=Ready ${ARGO}
