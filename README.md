@@ -4,11 +4,11 @@ Installing the ArgoCD Operator using the CLI
 ## Setup Procedure
 Ensure that the operator exists in the channel catalog.
 ```shell script
-oc get packagemanifests -n openshift-marketplace | grep argo
+oc get packagemanifests -n openshift-marketplace | grep gitops
 ```
 Check the CSV information
 ```shell script
-oc describe packagemanifests/argocd-operator -n openshift-marketplace | grep -A36 Channels
+oc describe packagemanifests/openshift-gitops-operator  -n openshift-marketplace
 ```
 
 ### Create a Project
